@@ -55,7 +55,7 @@ public class UserDaoJDBCImpl implements UserDao {
             System.out.println("Ошибка при добавлении юзера в таблицу");
         }
     }
-//    delete from $table where (id='$del')
+
     public void removeUserById(long id) {
         try{
             statement.executeUpdate("DELETE FROM users WHERE id =" + id + ")");
