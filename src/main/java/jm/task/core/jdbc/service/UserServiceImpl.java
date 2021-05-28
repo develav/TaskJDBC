@@ -1,5 +1,6 @@
 package jm.task.core.jdbc.service;
 
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
 
@@ -7,48 +8,29 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    private UserDaoJDBCImpl userDaoJDBC = new UserDaoJDBCImpl();
+    private final UserDaoHibernateImpl userDaoHibernate = new UserDaoHibernateImpl();
+
     public void createUsersTable()  {
-        try{
-            userDaoJDBC.createUsersTable();
-        } catch(SQLException e){
-            e.printStackTrace();
-        }
+        userDaoHibernate.createUsersTable();
     }
 
     public void dropUsersTable() {
-        try{
-            userDaoJDBC.dropUsersTable();
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
+        userDaoHibernate.dropUsersTable();
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        try{
-            userDaoJDBC.saveUser(name, lastName, age);
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
+        userDaoHibernate.saveUser(name, lastName, age);
     }
 
     public void removeUserById(long id) {
-        try{
-            userDaoJDBC.removeUserById(id);
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
+        userDaoHibernate.removeUserById(id);
     }
 
     public List<User> getAllUsers() {
-        return userDaoJDBC.getAllUsers();
+        return userDaoHibernate.getAllUsers();
     }
 
     public void cleanUsersTable() {
-        try {
-            userDaoJDBC.cleanUsersTable();
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
+            userDaoHibernate.cleanUsersTable();
     }
 }
